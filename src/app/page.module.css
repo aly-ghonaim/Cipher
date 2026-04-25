@@ -1,0 +1,132 @@
+.main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.topBar {
+  margin-bottom: 48px;
+}
+
+.logo {
+  font-size: 1rem;
+  color: var(--outline);
+  letter-spacing: 0.1em;
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  flex: 1;
+}
+
+/* Asymmetrical columns */
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 80px; /* Offset to create intentional asymmetry */
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.statsCard {
+  background: transparent;
+  box-shadow: none;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(134, 148, 138, 0.1);
+  padding: 16px 0;
+}
+
+.statRow:last-child {
+  border-bottom: none;
+}
+
+.statLabel {
+  color: var(--outline);
+}
+
+.statValue {
+  color: var(--on-surface);
+  font-size: 1.25rem;
+  text-shadow: 0 0 10px rgba(218, 226, 253, 0.2);
+}
+
+.inputCard {
+  z-index: 20; /* Keep it on top */
+}
+
+.actionArea {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 16px 32px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 0 20px rgba(78, 222, 163, 0.4);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--on-surface);
+  border: 1px solid rgba(60, 74, 66, 0.5); /* Ghost border */
+  border-radius: 6px;
+  padding: 16px 24px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(78, 222, 163, 0.05);
+}
+
+/* Make it responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .colRight {
+    margin-top: 0;
+  }
+}

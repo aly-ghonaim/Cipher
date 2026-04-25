@@ -1,0 +1,237 @@
+.main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.topBar {
+  margin-bottom: 48px;
+}
+
+.logo {
+  font-size: 1rem;
+  color: var(--outline);
+  letter-spacing: 0.1em;
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  flex: 1;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px;
+}
+
+.outputCard {
+  background: transparent;
+}
+
+.outputRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.outputText {
+  font-size: 1.05rem;
+  color: var(--primary);
+  word-break: break-all;
+  letter-spacing: 0.06em;
+  flex: 1;
+  text-shadow: 0 0 10px rgba(78, 222, 163, 0.2);
+}
+
+.copyBtn {
+  background: transparent;
+  border: 1px solid rgba(60, 74, 66, 0.5);
+  color: var(--on-surface-variant);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.copyBtn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.copyBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Parameters */
+.paramSection {
+  margin-bottom: 32px;
+}
+
+.paramSection:last-child {
+  margin-bottom: 0;
+}
+
+.paramLabel {
+  color: var(--outline);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.paramValue {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-left: 8px;
+}
+
+.slider {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--surface-container-high);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(78, 222, 163, 0.5);
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  border: none;
+}
+
+.sliderRange {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.65rem;
+  color: var(--outline);
+  letter-spacing: 0.08em;
+}
+
+.toggles {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toggle {
+  background: transparent;
+  border: 1px solid rgba(60, 74, 66, 0.4);
+  color: var(--outline);
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle:hover {
+  border-color: var(--on-surface-variant);
+  color: var(--on-surface);
+}
+
+.toggleActive {
+  border-color: var(--primary);
+  color: var(--primary);
+  background-color: rgba(78, 222, 163, 0.08);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
+  color: var(--on-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 0 20px rgba(78, 222, 163, 0.4);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--on-surface);
+  border: 1px solid rgba(60, 74, 66, 0.5);
+  border-radius: 6px;
+  padding: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnSecondary:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(78, 222, 163, 0.05);
+}
+
+.btnSecondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .colRight {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 24px 20px 100px;
+  }
+}

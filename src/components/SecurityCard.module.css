@@ -1,0 +1,29 @@
+.card {
+  background-color: var(--surface-container-low);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  /* Extra diffuse ambient shadow simulating screen glow */
+  box-shadow: 0 20px 50px rgba(11, 19, 38, 0.8);
+}
+
+/* Glassmorphism approach for the header area representing a "lens" */
+.header {
+  background-color: rgba(45, 52, 73, 0.4); /* surface-container-highest */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px 32px;
+  border-bottom: 1px solid rgba(60, 74, 66, 0.15); /* Ghost Border variant */
+}
+
+.title {
+  color: var(--on-surface);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.body {
+  padding: 32px; /* Breathing room xl */
+}
+

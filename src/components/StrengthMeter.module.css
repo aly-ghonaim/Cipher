@@ -1,0 +1,98 @@
+.meterContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 32px; /* "Breathing Room" 2xl scale */
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.scoreWrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.percentage {
+  font-size: 6rem; /* display-lg */
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-left: -8px; /* Intentionally bleed left slightly for asymmetrical feel */
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+.label {
+  font-size: 1.25rem;
+  color: var(--on-surface-variant);
+  margin-left: 24px;
+  text-align: right;
+  flex: 1;
+}
+
+.filamentTrack {
+  height: 4px;
+  background-color: var(--surface-container-high);
+  width: 100%;
+  position: relative;
+  border-radius: 2px;
+  overflow: visible;
+}
+
+.filamentFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+}
+
+/* Filament Glows - the "Neon Tube" effect */
+.filamentFill::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  transform: translateY(-50%);
+  filter: blur(8px);
+  z-index: -1;
+  transition: background-color 0.4s ease;
+}
+
+/* Themes */
+.strong.percentage { color: var(--primary); text-shadow: 0 0 24px rgba(78, 222, 163, 0.4); }
+.strong.filamentFill { background-color: var(--primary); }
+.strong.filamentFill::after { background-color: var(--primary); opacity: 0.6; }
+
+.medium.percentage { color: var(--secondary); text-shadow: 0 0 24px rgba(255, 185, 95, 0.3); }
+.medium.filamentFill { background-color: var(--secondary); }
+.medium.filamentFill::after { background-color: var(--secondary); opacity: 0.6; }
+/* Using warning/medium "pulse" */
+@keyframes pulse {
+  0% { text-shadow: 0 0 12px rgba(255, 185, 95, 0.2); }
+  50% { text-shadow: 0 0 24px rgba(255, 185, 95, 0.6); }
+  100% { text-shadow: 0 0 12px rgba(255, 185, 95, 0.2); }
+}
+.medium.percentage { animation: pulse 2s infinite; }
+
+.weak.percentage { color: var(--error); }
+.weak.filamentFill { background-color: var(--error); }
+.weak.filamentFill::after { background-color: var(--error); opacity: 0.4; }
+/* Using danger "flicker" */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  55% { opacity: 1; }
+  56% { opacity: 0.6; }
+  57% { opacity: 1; }
+}
+.weak.percentage { animation: flicker 3s infinite; }
+
+.metadata {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: var(--outline);
+  text-align: right;
+  letter-spacing: 0.05em;
+}

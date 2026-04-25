@@ -1,0 +1,39 @@
+.checklistContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--surface-container);
+  border-radius: 8px;
+  border-left: 2px solid var(--surface-container-highest);
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--on-surface-variant);
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.uncheckedIcon {
+  color: var(--outline-variant);
+}
+
+.checkedIcon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 8px rgba(78, 222, 163, 0.4));
+}
+
+.fulfilled {
+  color: var(--on-surface);
+}

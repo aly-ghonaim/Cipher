@@ -1,0 +1,61 @@
+.inputContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 2rem; /* The analyzer core needs large inputs */
+  color: var(--on-surface);
+  line-height: 1.5;
+  padding: 8px 48px 8px 0; /* Add right padding for toggle */
+  outline: none;
+  border-bottom: 2px solid rgba(60, 74, 66, 0.3); /* Ghost border */
+  transition: all 0.3s ease;
+}
+
+.toggleBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--outline);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.toggleBtn:hover {
+  color: var(--primary);
+}
+
+.inputField::placeholder {
+  color: var(--outline);
+  opacity: 0.5;
+}
+
+.inputField:focus {
+  border-bottom-color: var(--primary);
+  /* Text transition to primary-fixed, approximated by primary here for visibility */
+  color: var(--primary); 
+  text-shadow: 0 0 12px rgba(78, 222, 163, 0.3);
+}
+
+/* We don't want standard input background autofill logic to ruin the dark mode */
+.inputField:-webkit-autofill,
+.inputField:-webkit-autofill:hover, 
+.inputField:-webkit-autofill:focus, 
+.inputField:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--on-surface) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
