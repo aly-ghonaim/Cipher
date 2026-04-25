@@ -81,7 +81,6 @@ export default function GeneratorPage() {
     <main className={styles.main}>
       <header className={styles.topBar}>
         <div className={`${styles.logo} text-headline`}>
-          [ PASSWORD.GENERATOR ] // TERMINAL
         </div>
       </header>
 

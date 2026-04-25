@@ -51,7 +51,6 @@ export default function BreachPage() {
     <main className={styles.main}>
       <header className={styles.topBar}>
         <div className={`${styles.logo} text-headline`}>
-          [ BREACH.SCANNER ] // TERMINAL
         </div>
       </header>
 

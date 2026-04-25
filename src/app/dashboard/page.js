@@ -63,7 +63,6 @@ export default function DashboardPage() {
     <main className={styles.main}>
       <header className={styles.topBar}>
         <div className={`${styles.logo} text-headline`}>
-          [ SECURITY.METRICS ] // TERMINAL
         </div>
       </header>
 

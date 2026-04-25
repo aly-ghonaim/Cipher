@@ -43,7 +43,6 @@ export default function HistoryPage() {
     <main className={styles.main}>
       <header className={styles.topBar}>
         <div className={`${styles.logo} text-headline`}>
-          [ AUDIT.LOG ] // TERMINAL
         </div>
         {history.length > 0 && (
           <button

@@ -54,7 +54,6 @@ export default function Home() {
     <main className={styles.main}>
       <header className={styles.topBar}>
         <div className={`${styles.logo} text-headline`}>
-          [ OBSIDIAN.VAULT ] // TERMINAL
         </div>
       </header>
 
