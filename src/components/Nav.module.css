@@ -111,10 +111,49 @@
   margin-bottom: 12px;
 }
 
-.authBlock {
+.loginBlock {
+  margin: 0 12px 20px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.loginBtn {
+  display: block;
+  text-align: center;
+  background: var(--primary);
+  color: #0b1326;
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.loginBtn:hover {
+  opacity: 0.88;
+}
+
+.loginHint {
+  font-size: 0.58rem;
+  color: var(--outline);
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  text-align: center;
+  margin: 0;
+}
+
+.userBlock {
+  margin: 0 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(78, 222, 163, 0.06);
+  border: 1px solid rgba(78, 222, 163, 0.15);
+  border-radius: 6px;
+  padding: 10px 12px;
 }
 
 .userEmail {
@@ -137,25 +176,11 @@
   cursor: pointer;
   transition: background 0.2s;
   text-align: left;
+  width: 100%;
 }
 
 .logoutBtn:hover {
   background: rgba(255, 180, 171, 0.08);
-}
-
-.loginLink {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  color: var(--primary);
-  text-decoration: none;
-  padding: 5px 0;
-  opacity: 0.8;
-  transition: opacity 0.2s;
-}
-
-.loginLink:hover {
-  opacity: 1;
 }
 
 /* Mobile: bottom tab bar */

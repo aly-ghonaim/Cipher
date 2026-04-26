@@ -83,6 +83,18 @@ export default function Nav() {
         <span className={styles.logoDot} />
       </div>
 
+      {user ? (
+        <div className={styles.userBlock}>
+          <span className={`${styles.userEmail} text-mono`}>{user.email.split('@')[0]}</span>
+          <button className={`${styles.logoutBtn} text-mono`} onClick={handleLogout}>LOGOUT</button>
+        </div>
+      ) : (
+        <div className={styles.loginBlock}>
+          <Link href="/auth" className={`${styles.loginBtn} text-mono`}>SIGN IN</Link>
+          <p className={`${styles.loginHint} text-mono`}>Login to save history</p>
+        </div>
+      )}
+
       <div className={styles.links}>
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -102,14 +114,6 @@ export default function Nav() {
 
       <div className={styles.footer}>
         <span className={`${styles.footerText} text-mono`}>v1.0.0</span>
-        {user ? (
-          <div className={styles.authBlock}>
-            <span className={`${styles.userEmail} text-mono`}>{user.email.split('@')[0]}</span>
-            <button className={`${styles.logoutBtn} text-mono`} onClick={handleLogout}>LOGOUT</button>
-          </div>
-        ) : (
-          <Link href="/auth" className={`${styles.loginLink} text-mono`}>LOGIN</Link>
-        )}
       </div>
     </nav>
   );
