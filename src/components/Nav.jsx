@@ -1,7 +1,9 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { supabase } from '../lib/supabase';
 import styles from './Nav.module.css';
 
 const navItems = [
@@ -59,6 +61,20 @@ const navItems = [
 
 export default function Nav() {
   const pathname = usePathname();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    setUser(null);
+  }
 
   return (
     <nav className={styles.nav}>
@@ -86,6 +102,14 @@ export default function Nav() {
 
       <div className={styles.footer}>
         <span className={`${styles.footerText} text-mono`}>v1.0.0</span>
+        {user ? (
+          <div className={styles.authBlock}>
+            <span className={`${styles.userEmail} text-mono`}>{user.email.split('@')[0]}</span>
+            <button className={`${styles.logoutBtn} text-mono`} onClick={handleLogout}>LOGOUT</button>
+          </div>
+        ) : (
+          <Link href="/auth" className={`${styles.loginLink} text-mono`}>LOGIN</Link>
+        )}
       </div>
     </nav>
   );

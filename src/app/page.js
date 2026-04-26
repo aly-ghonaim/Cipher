@@ -9,6 +9,7 @@ import SecurityCard from '../components/SecurityCard';
 import StrengthChecklist from '../components/StrengthChecklist';
 import { calculatePasswordEntropy } from '../utils/entropy';
 import { saveToHistory } from '../utils/historyStore';
+import { saveToSupabase } from '../utils/supabaseStore';
 
 export default function Home() {
   const router = useRouter();
@@ -40,12 +41,8 @@ export default function Home() {
 
   function handleSave() {
     if (!password) return;
-    saveToHistory({
-      password,
-      strength: analysis.label,
-      percentage: analysis.percentage,
-      entropy: analysis.entropy,
-    });
+    saveToHistory({ password, strength: analysis.label, percentage: analysis.percentage, entropy: analysis.entropy });
+    saveToSupabase({ password, strength: analysis.label, percentage: analysis.percentage, entropy: analysis.entropy });
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   }

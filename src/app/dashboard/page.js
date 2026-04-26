@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import SecurityCard from '../../components/SecurityCard';
 import { getHistory } from '../../utils/historyStore';
+import { getSupabaseHistory } from '../../utils/supabaseStore';
 
 function computeStats(history) {
   const total = history.length;
@@ -56,7 +57,12 @@ export default function DashboardPage() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    setStats(computeStats(getHistory()));
+    async function load() {
+      const cloudData = await getSupabaseHistory();
+      const data = cloudData !== null ? cloudData : getHistory();
+      setStats(computeStats(data));
+    }
+    load();
   }, []);
 
   return (

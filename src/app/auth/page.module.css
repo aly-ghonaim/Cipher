@@ -1,0 +1,145 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  padding: 48px 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.brand {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 0.65rem;
+  color: var(--outline);
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--surface-variant);
+  margin-bottom: 32px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--outline);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--on-surface);
+}
+
+.activeTab {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--outline);
+  margin-top: 8px;
+}
+
+.input {
+  width: 100%;
+  background: var(--surface-variant);
+  border: 1px solid var(--surface-variant);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 0.875rem;
+  color: var(--on-surface);
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--primary);
+}
+
+.input::placeholder {
+  color: var(--outline);
+}
+
+.errorMsg {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--error);
+  margin-top: 4px;
+}
+
+.successMsg {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+.submitBtn {
+  margin-top: 16px;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary), #2db87c);
+  color: #0b1326;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .main {
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+}

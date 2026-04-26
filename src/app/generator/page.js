@@ -7,6 +7,7 @@ import SecurityCard from '../../components/SecurityCard';
 import { generatePassword } from '../../utils/generator';
 import { calculatePasswordEntropy } from '../../utils/entropy';
 import { saveToHistory } from '../../utils/historyStore';
+import { saveToSupabase } from '../../utils/supabaseStore';
 
 const defaultOptions = {
   length: 20,
@@ -60,12 +61,8 @@ export default function GeneratorPage() {
 
   function handleSave() {
     if (!generated) return;
-    saveToHistory({
-      password: generated,
-      strength: analysis.label,
-      percentage: analysis.percentage,
-      entropy: analysis.entropy,
-    });
+    saveToHistory({ password: generated, strength: analysis.label, percentage: analysis.percentage, entropy: analysis.entropy });
+    saveToSupabase({ password: generated, strength: analysis.label, percentage: analysis.percentage, entropy: analysis.entropy });
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   }

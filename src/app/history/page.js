@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './page.module.css';
 import { getHistory, deleteEntry, clearHistory } from '../../utils/historyStore';
+import { getSupabaseHistory, deleteSupabaseEntry, clearSupabaseHistory } from '../../utils/supabaseStore';
 
 function StrengthBadge({ label }) {
   const cls = label === 'Strong' ? styles.badgeStrong : label === 'Medium' ? styles.badgeMedium : styles.badgeWeak;
@@ -18,23 +19,44 @@ function formatDate(iso) {
 export default function HistoryPage() {
   const [history, setHistory] = useState([]);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [isCloud, setIsCloud] = useState(false);
 
   useEffect(() => {
-    setHistory(getHistory());
+    async function load() {
+      const cloudData = await getSupabaseHistory();
+      if (cloudData !== null) {
+        setHistory(cloudData);
+        setIsCloud(true);
+      } else {
+        setHistory(getHistory());
+        setIsCloud(false);
+      }
+    }
+    load();
   }, []);
 
-  function handleDelete(id) {
-    deleteEntry(id);
-    setHistory(getHistory());
+  async function handleDelete(id) {
+    if (isCloud) {
+      await deleteSupabaseEntry(id);
+      const updated = await getSupabaseHistory();
+      setHistory(updated ?? []);
+    } else {
+      deleteEntry(id);
+      setHistory(getHistory());
+    }
   }
 
-  function handleClear() {
+  async function handleClear() {
     if (!confirmClear) {
       setConfirmClear(true);
       setTimeout(() => setConfirmClear(false), 3000);
       return;
     }
-    clearHistory();
+    if (isCloud) {
+      await clearSupabaseHistory();
+    } else {
+      clearHistory();
+    }
     setHistory([]);
     setConfirmClear(false);
   }

@@ -6,6 +6,7 @@ import AnalyzerInput from '../../components/AnalyzerInput';
 import SecurityCard from '../../components/SecurityCard';
 import { checkBreach } from '../../utils/breach';
 import { saveToHistory } from '../../utils/historyStore';
+import { saveToSupabase } from '../../utils/supabaseStore';
 
 const STATUS = { IDLE: 'idle', LOADING: 'loading', SAFE: 'safe', BREACHED: 'breached', ERROR: 'error' };
 const COOLDOWN_MS = 3000;
@@ -28,13 +29,8 @@ export default function BreachPage() {
       setBreachCount(count);
       setStatus(count > 0 ? STATUS.BREACHED : STATUS.SAFE);
 
-      saveToHistory({
-        password,
-        strength: count > 0 ? 'Weak' : 'Strong',
-        percentage: count > 0 ? 10 : 90,
-        entropy: 0,
-        breachCount: count,
-      });
+      saveToHistory({ password, strength: count > 0 ? 'Weak' : 'Strong', percentage: count > 0 ? 10 : 90, entropy: 0, breachCount: count });
+      saveToSupabase({ password, strength: count > 0 ? 'Weak' : 'Strong', percentage: count > 0 ? 10 : 90, entropy: 0, breachCount: count });
     } catch {
       setStatus(STATUS.ERROR);
       setErrorMsg('Unable to reach breach database. Check your connection.');
