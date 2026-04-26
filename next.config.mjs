@@ -6,7 +6,7 @@ const cspHeader = `
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' blob: data:;
-    connect-src 'self' https://api.pwnedpasswords.com;
+    connect-src 'self' https://clurezezuxhfkskicjdk.supabase.co;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
