@@ -1,6 +1,6 @@
 # Cipher — Password Analyzer
 
-A 5-screen browser-based password security toolkit. No backend, no data collection.
+A 6-screen browser-based password security toolkit. No backend, no data collection.
 
 ## Live Demo
 [https://cipher-snowy-tau.vercel.app](https://cipher-snowy-tau.vercel.app)
@@ -25,9 +25,9 @@ npm run dev
 Open http://localhost:3000
 
 ## Team
-| Member | Role |
-|--------|------|
-| Name | Team Lead — Architecture, Security, Deployment |
-| Name | UI/UX — Design System, Generator page |
-| Name | API Integration — Breach Checker, Financial Analysis |
-| Name | Scrum Master — Jira, History & Dashboard pages |
+| Member | ID | Role |
+|--------|-----|------|
+| Aly Mohamed Sherif Ghoneim | 24101121 | Team Lead — Architecture, Security, Deployment |
+| Abdullah Eissa | 24102607 | UI/UX — Design System, Generator page |
+| Abdallah Elbadrawy | 24102576 | API Integration — Breach Checker, Financial Analysis |
+| Marwan Rasim Ali | 24101911 | Scrum Master — Jira, History & Dashboard pages |
